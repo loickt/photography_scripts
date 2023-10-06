@@ -61,7 +61,7 @@ def frame_generator(inputStr,definition,bordEnPct):
                 counter+=1
         else:
             frame_generator(inputStr+"/"+file,definition,bordEnPct)
-    print(str(counter)+" picture"+"s"*(counter!=1)+" framed")
+    print(str(counter)+" picture"+"s"*(counter>1)+" framed")
 
 
 inputStr=inputStr.replace('\\', "/")
