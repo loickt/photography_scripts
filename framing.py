@@ -4,9 +4,8 @@ from pathlib import Path
 import PIL
 import os
 from PIL import Image, ImageDraw
-
-print("Entrez l'adresse en input")
-inputStr= input(r"collez ici l'adresse")
+print("Collez l'adresse ici :")
+inputStr= input(r" -  ")
 
 bordEnPct = 2.5
 definition=3000
@@ -14,7 +13,6 @@ definition=3000
 def reduce(input,output,file,fond,PctBord):
     dimFond = fond.size[0]  #fond carré
     tailleImageFinale = dimFond - (2*PctBord)*dimFond
-
 
     imgAddr = input+"/"+file
 
@@ -42,7 +40,6 @@ def frame_generator(inputStr,definition,bordEnPct):
 
     path = Path("%s" %inputStr)
     parent_folder=str(path.parent.absolute())
-    print("basename : "+str(os.path.basename(path)))
     outputStr=parent_folder+'\\'+os.path.basename(path)+' cadré'
     #outputStr=inputStr+'/cadré'
     if not os.path.exists(outputStr):
@@ -50,18 +47,22 @@ def frame_generator(inputStr,definition,bordEnPct):
 
     input = r'%s'%inputStr
     output = r'%s'%outputStr
-
+    counter = 0
     for file in os.listdir(input):
         if file[-3:]=="jpg" or file[-3:]=="JPG":
-            fond = img = Image.new('RGB', (definition, definition), color = 'white')
-            img=reduce(input,output,file,fond,bordEnPct/100)
             outputImgAddr = output+"/"+file
-            fond=overlay(fond,img)
-            fond.save(outputImgAddr)
+            if not os.path.exists(outputImgAddr):
+                fond = img = Image.new('RGB', (definition, definition), color = 'white')
+                img=reduce(input,output,file,fond,bordEnPct/100)
+                
+                fond=overlay(fond,img)
+                fond.save(outputImgAddr)
+                print("Framed : "+file)
+                counter+=1
         else:
             frame_generator(inputStr+"/"+file,definition,bordEnPct)
+    print(str(counter)+" pictures framed")
 
 
-inputStr=inputStr.replace('\\', "/")  #adresse du dossier fournie en haut
-print("En cas de problème de type str et windows path : redémarrer vscode")
+inputStr=inputStr.replace('\\', "/")
 frame_generator(inputStr,definition,bordEnPct)
