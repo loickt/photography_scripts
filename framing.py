@@ -27,7 +27,7 @@ def reduce(input,output,file,fond,PctBord):
 def overlay(fond,image):
     dimFond = fond.size[0]  #fond carré
     width, height = image.size
-    if width<dimFond and height<dimFond:
+    if width<=dimFond and height<=dimFond:
         left=(dimFond-width)//2
         lower=(dimFond-height)//2
         corner=(left,lower)
