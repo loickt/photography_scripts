@@ -1,5 +1,3 @@
-# il reste deux  mais ça marche alors ...
-
 from pathlib import Path
 import PIL
 import os
@@ -41,7 +39,6 @@ def frame_generator(inputStr,definition,bordEnPct):
     path = Path("%s" %inputStr)
     parent_folder=str(path.parent.absolute())
     outputStr=parent_folder+'\\'+os.path.basename(path)+' cadré'
-    #outputStr=inputStr+'/cadré'
     if not os.path.exists(outputStr):
         os.mkdir(outputStr)
 
