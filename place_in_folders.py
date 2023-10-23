@@ -18,5 +18,6 @@ for file in files:
     else:
         create_folder(file_extension,inputStr)
         file_counts[file_extension] = 1
-    os.rename(inputStr+"\\"+file, inputStr+'\\'+file_extension+"\\"+str(file_counts.get(file_extension, 0))+"."+file_extension)
+    # os.rename(inputStr+"\\"+file, inputStr+'\\'+file_extension+"\\"+str(file_counts.get(file_extension, 0))+"."+file_extension)
+    os.rename(inputStr+"/"+file, inputStr+'/'+file_extension+"/"+str(file_counts.get(file_extension, 0))+"."+file_extension)
 
