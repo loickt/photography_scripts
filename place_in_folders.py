@@ -1,5 +1,6 @@
 import os
 inputStr= input(r"collez ici l'adresse")
+rename= input(r"Renommer ? (1/0)")
 files=os.listdir(inputStr)
 files.sort()
 
@@ -18,5 +19,7 @@ for file in files:
     else:
         create_folder(file_extension,inputStr)
         file_counts[file_extension] = 1
-    os.rename(inputStr+"/"+file, inputStr+'/'+file_extension+"/"+str(file_counts.get(file_extension, 0))+"."+file_extension)
-
+    if rename==1:
+        os.rename(inputStr+"/"+file, inputStr+'/'+file_extension+"/"+str(file_counts.get(file_extension, 0))+"."+file_extension)
+    else:
+        os.rename(inputStr+"/"+file, inputStr+'/'+file_extension+"/"+file)
