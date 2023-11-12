@@ -3,6 +3,20 @@ import re
 from datetime import datetime, timedelta
 from PIL import Image
 
+# Professional camera pictures have persistent date in the exifs
+# Often, phone taken pictures don't.
+
+# This script changes the name of android taken pictures 
+# You will be able to sort all the pictures by date by sorting them by name.
+
+# Method used :
+# Put the android pictures in a folder of professional camera pictures (containing exif)
+# it deduces the date and time of the phone pics from their filename
+# It replaces the filename by the filename of the professional camera pictures
+# which have the nearest date and time + _phone_ + number
+ 
+
+
 #todo : 
 # print at the end how many files to rename manually
 # beeing able to ad phone pictures after having renamed previous phone pictures
