@@ -80,7 +80,7 @@ def rename_files(folder_path):
     for filename, incorrect_date in files_with_incorrect_date:
         closest_valid_date_filename = get_closest_valid_date(incorrect_date,folder_path,files_to_keep_non_changed)
 
-        new_filename = f"{closest_valid_date_filename[:-4]}_phone_{len([f for f in os.listdir(folder_path) if closest_valid_date_filename[:-4] in f]) + 1}{filename[-4:]}"
+        new_filename = f"{closest_valid_date_filename[:-4]}_phone_{len([f for f in os.listdir(folder_path) if closest_valid_date_filename[:-4] in f])}{filename[-4:]}"
 
         os.rename(os.path.join(folder_path, filename), os.path.join(folder_path, new_filename))
     print(str(len(files_with_incorrect_date))+" file"+"s"*(len(files_with_incorrect_date)>1)+ " renamed")
