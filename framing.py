@@ -3,9 +3,9 @@ import PIL
 import os
 from PIL import Image, ImageDraw
 print("Collez l'adresse ici :")
-inputStr= input(r" -  ")
+inputStr= input()
 
-bordEnPct = 2.5
+bordEnPct = 0
 definition=3000
 
 def reduce(input,output,file,fond,PctBord):
@@ -38,7 +38,7 @@ def frame_generator(inputStr,definition,bordEnPct):
 
     path = Path("%s" %inputStr)
     parent_folder=str(path.parent.absolute())
-    outputStr=parent_folder+'\\'+os.path.basename(path)+' cadré'
+    outputStr=parent_folder+'/'+os.path.basename(path)+' cadré'
     if not os.path.exists(outputStr):
         os.mkdir(outputStr)
 
@@ -47,7 +47,7 @@ def frame_generator(inputStr,definition,bordEnPct):
     counter = 0
     for file in os.listdir(input):
         if file[-3:]=="jpg" or file[-3:]=="JPG":
-            outputImgAddr = output+"/"+file
+            outputImgAddr = output+"/"+file #change here for ubuntu
             if not os.path.exists(outputImgAddr):
                 fond = img = Image.new('RGB', (definition, definition), color = 'white')
                 img=reduce(input,output,file,fond,bordEnPct/100)
