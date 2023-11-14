@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw
 print("Collez l'adresse ici :")
 inputStr= input()
 
-bordEnPct = 0
+bordEnPct = 2.5
 definition=3000
 
 def reduce(input,output,file,fond,PctBord):
