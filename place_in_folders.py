@@ -1,6 +1,6 @@
 import os
 inputStr= input(r"collez ici l'adresse")
-rename= input(r"Renommer ? (1/0)")
+rename= 0#input(r"Renommer ? (1/0)")
 files=os.listdir(inputStr)
 files.sort()
 
